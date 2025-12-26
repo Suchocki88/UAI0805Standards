@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8.5 Standards Alignment - Understanding AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            height: 1600px;
+            overflow-y: auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #5d4e7a 0%, #8b7aa8 100%);
+            color: white;
+            padding: 40px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+        }
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+        .header .lesson-info {
+            font-size: 0.95em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        .content {
+            padding: 30px;
+        }
+        .intro {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #9c27b0;
+            margin-bottom: 30px;
+        }
+        .standards-selector {
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .standards-selector label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #5d4e7a;
+            font-size: 1.1em;
+        }
+        .standards-selector select {
+            width: 100%;
+            padding: 12px;
+            font-size: 1em;
+            border: 2px solid #5d4e7a;
+            border-radius: 5px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .standards-selector select:hover {
+            border-color: #8b7aa8;
+        }
+        .standards-selector select:focus {
+            outline: none;
+            border-color: #8b7aa8;
+            box-shadow: 0 0 0 3px rgba(139, 122, 168, 0.1);
+        }
+        .standards-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        .standards-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .standard-section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-left: 4px solid #5d4e7a;
+        }
+        .standard-section h2 {
+            color: #5d4e7a;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        .standard-section h3 {
+            color: #8b7aa8;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .standard-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #ab47bc;
+        }
+        .standard-code {
+            font-weight: 600;
+            color: #5d4e7a;
+            font-family: 'Courier New', monospace;
+        }
+        .standard-description {
+            margin-top: 8px;
+            color: #555;
+        }
+        .alignment-note {
+            background: #fff3e0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ff9800;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        .lesson-mapping {
+            background: #e8f5e9;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 3px solid #4caf50;
+        }
+        .lesson-mapping strong {
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Standards Alignment</h1>
+            <div class="subtitle">Lesson 8.5: Portfolio Completion</div>
+            <div class="lesson-info">Chapter 8: Looking Forward | Project Day | Reflection Essay</div>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <strong>Lesson Overview:</strong> Students complete their reflection essays examining their creative process and what they learned through human-AI collaboration on their literary project (short story, novella, play, poetry collection, etc.). The reflection essay is written without AI assistance, demonstrating that knowing when to work independently is itself an AI literacy skill. Students address three areas: the collaboration process (how they worked with Alia, what worked, what didn't), their authentic voice (where it appears in the work, how they handled moments when AI output felt "not quite them"), and what they learned (about AI capabilities/limitations, about their own creative process, about human-AI collaboration going forward). The reflection essay is turned in for a grade. Students may also prepare for upcoming sharing day presentations. This lesson synthesizes the creative project strand that has run alongside course content throughout the semester.
+            </div>
+
+            <div class="standards-selector">
+                <label for="standards-dropdown">Select Standards Framework:</label>
+                <select id="standards-dropdown" onchange="showStandards(this.value)">
+                    <option value="">-- Choose State Standards --</option>
+                    <option value="texas">Texas (TEKS)</option>
+                    <option value="california">California</option>
+                    <option value="florida">Florida</option>
+                    <option value="newyork">New York</option>
+                    <option value="pennsylvania">Pennsylvania</option>
+                    <option value="illinois">Illinois</option>
+                    <option value="ohio">Ohio</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="northcarolina">North Carolina</option>
+                    <option value="michigan">Michigan</option>
+                    <option value="virginia">Virginia</option>
+                    <option value="washington">Washington</option>
+                    <option value="mississippi">Mississippi</option>
+                    <option value="ccss">Common Core State Standards (CCSS) - ELA</option>
+                    <option value="iste">ISTE Standards for Students</option>
+                    <option value="csta">CSTA K-12 Computer Science Standards</option>
+                    <option value="c3">C3 Framework for Social Studies</option>
+                </select>
+            </div>
+
+            <!-- Texas TEKS -->
+            <div id="texas" class="standards-content">
+                <div class="standard-section">
+                    <h2>Texas Essential Knowledge and Skills (TEKS)</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing, process analysis, and metacognitive thinking about creative work and technology use.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.110.36.b.10</div>
+                        <div class="standard-description">Compose literary texts such as personal narratives, fiction, and poetry using genre characteristics and craft.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students have composed substantial literary texts (short stories, novellas, plays, poetry collections) throughout the course. The reflection essay asks them to examine the genre characteristics and craft decisions they made in that creative work.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.110.36.b.11</div>
+                        <div class="standard-description">Compose informational texts using genre characteristics and craft.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay is informational writing—students analyze their creative process, describe their collaboration with AI, and articulate what they learned. This requires clear organization, specific examples, and analytical thinking.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.110.36.b.12</div>
+                        <div class="standard-description">Compose argumentative texts using genre characteristics and craft.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Parts of the reflection essay require argumentation: students must support claims about where their authentic voice appears with evidence from their creative work, and defend their assessment of what worked and didn't work in the collaboration.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- California Standards -->
+            <div id="california" class="standards-content">
+                <div class="standard-section">
+                    <h2>California State Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing, analysis of creative process, and clear communication about learning.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex ideas about human-AI collaboration, authentic voice, and creative process. Students must convey their analysis clearly and accurately, with specific examples from their project experience.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.10</div>
+                        <div class="standard-description">Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students complete a focused reflection essay (500-750 words) in a single class period, demonstrating ability to write substantively within time constraints. This caps extended creative writing done throughout the course.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A of the reflection essay asks students to describe how their collaboration evolved over time—essentially reflecting on how they developed and strengthened their creative work through the revision process with AI assistance.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Florida Standards -->
+            <div id="florida" class="standards-content">
+                <div class="standard-section">
+                    <h2>Florida B.E.S.T. Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective and analytical writing about creative process.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.11.C.1.3</div>
+                        <div class="standard-description">Write to argue a position, supporting claims using logical reasoning and credible evidence.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students argue for their assessment of the collaboration—what worked, what didn't, where their voice appears most clearly. These claims must be supported with specific evidence from their creative work and process.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.11.C.1.4</div>
+                        <div class="standard-description">Write expository texts to explain and analyze information from multiple sources, using a logical organization.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay explains and analyzes the student's creative process, drawing on their experience as the primary source. The three-part structure (Collaboration, Voice, Learning) provides logical organization.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELA.11.V.1.1</div>
+                        <div class="standard-description">Integrate academic vocabulary appropriate to grade level in speaking and writing.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students use course vocabulary—authentic voice, collaboration, AI capabilities and limitations—in their reflection essays, demonstrating command of the concepts they've learned.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New York Standards -->
+            <div id="newyork" class="standards-content">
+                <div class="standard-section">
+                    <h2>New York State Learning Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing and metacognitive analysis of creative process.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11-12W2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex ideas about human-AI collaboration and authentic voice. Students convey their analysis of the creative process with clarity and specific supporting examples.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11-12W4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students produce a coherent reflection essay organized around three clear parts (Collaboration, Voice, Learning), with style appropriate to reflective academic writing. The essay is written for their teacher as audience.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11-12W10</div>
+                        <div class="standard-description">Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay caps a semester of extended creative writing. Students now write a focused analytical piece within a single class period, demonstrating range of writing abilities.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pennsylvania Standards -->
+            <div id="pennsylvania" class="standards-content">
+                <div class="standard-section">
+                    <h2>Pennsylvania Academic Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses writing standards for reflective and analytical composition about creative process and technology use.
+                    </div>
+                    
+                    <h3>Writing</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.4.11-12.A</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex ideas about creative collaboration with AI. Students must convey their process and learning clearly, with accurate descriptions of what occurred and what they discovered.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.4.11-12.B</div>
+                        <div class="standard-description">Write with a sharp, distinct focus identifying topic, task, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay has clear focus: examining the collaboration process, identifying authentic voice, and articulating learning. Students write for their teacher with the purpose of demonstrating reflective understanding.</div>
+                    </div>
+                    
+                    <h3>Technology</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3.7.12.C</div>
+                        <div class="standard-description">Evaluate the effectiveness of technology in solving problems.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A of the reflection essay asks students to evaluate AI effectiveness: What did Alia do well? Where did you need to override or work around her suggestions? This is direct evaluation of technology effectiveness in creative problem-solving.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Illinois Standards -->
+            <div id="illinois" class="standards-content">
+                <div class="standard-section">
+                    <h2>Illinois Learning Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing and metacognitive analysis.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11-12.W.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students write reflective essays examining complex ideas about human-AI collaboration, authentic voice, and creative process. The three-part structure ensures comprehensive examination of the topic.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11-12.W.4</div>
+                        <div class="standard-description">Produce clear and coherent writing appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay requires clear, coherent writing organized around three specific areas. Students write for their teacher, with the purpose of demonstrating genuine reflection on their creative process.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ohio Standards -->
+            <div id="ohio" class="standards-content">
+                <div class="standard-section">
+                    <h2>Ohio's Learning Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective and analytical writing.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex concepts: the collaboration process, authentic voice in creative work, and learning about AI capabilities and limitations. Students convey their analysis with specific examples.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.10</div>
+                        <div class="standard-description">Write routinely over extended and shorter time frames for a range of tasks, purposes, and audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students complete the reflection essay within a class period, demonstrating ability to produce substantive analytical writing within time constraints. This complements the extended creative writing done throughout the course.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Georgia Standards -->
+            <div id="georgia" class="standards-content">
+                <div class="standard-section">
+                    <h2>Georgia Standards of Excellence</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing and process analysis.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELAGSE11-12W2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex ideas about creative process and human-AI collaboration. Students must be accurate in describing their experience and clear in analyzing what they learned.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">ELAGSE11-12W5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A asks students to reflect on how their collaboration evolved—essentially analyzing how they developed and strengthened their creative writing through the revision process. The reflection itself demonstrates metacognitive awareness of writing development.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- North Carolina Standards -->
+            <div id="northcarolina" class="standards-content">
+                <div class="standard-section">
+                    <h2>North Carolina Standard Course of Study</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective and analytical writing.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students write reflective essays examining their creative process, collaboration experience, and learning. The three-part structure ensures thorough examination of complex ideas about human-AI collaboration.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which development, organization, and style are appropriate.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay requires clear organization (three parts), coherent development (specific examples supporting claims), and appropriate style (reflective academic writing).</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Michigan Standards -->
+            <div id="michigan" class="standards-content">
+                <div class="standard-section">
+                    <h2>Michigan Merit Curriculum Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing and metacognitive analysis.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex concepts about creative collaboration, authentic voice, and learning from the AI collaboration experience. Students support their analysis with specific examples from their project.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.10</div>
+                        <div class="standard-description">Write routinely over extended and shorter time frames for a range of tasks, purposes, and audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students produce a focused reflection essay within class time, complementing the extended creative writing they've done throughout the semester. This demonstrates range in writing tasks and time frames.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virginia Standards -->
+            <div id="virginia" class="standards-content">
+                <div class="standard-section">
+                    <h2>Virginia Standards of Learning</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English standards for reflective and analytical writing about creative process.
+                    </div>
+                    
+                    <h3>English</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11.7</div>
+                        <div class="standard-description">The student will write in a variety of forms with an emphasis on persuasion and literary analysis.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay includes literary analysis—students analyze their own creative work to identify where authentic voice appears and how craft decisions were made. Part B specifically requires analysis of voice in the literary work.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">11.7.b</div>
+                        <div class="standard-description">Organize ideas in a sustained and logical manner.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The three-part structure (Collaboration, Voice, Learning) provides logical organization. Students must sustain their analysis across 500-750 words with coherent development of each section.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Washington Standards -->
+            <div id="washington" class="standards-content">
+                <div class="standard-section">
+                    <h2>Washington State Learning Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective writing and process analysis.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students write reflective essays examining the complex process of human-AI collaboration in creative work. They convey their understanding of AI capabilities, authentic voice, and their own learning.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay requires clear, coherent writing organized around three specific parts. Students write for their teacher with the purpose of demonstrating genuine understanding of their creative process.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mississippi Standards -->
+            <div id="mississippi" class="standards-content">
+                <div class="standard-section">
+                    <h2>Mississippi College and Career Readiness Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 addresses English language arts standards for reflective and analytical writing.
+                    </div>
+                    
+                    <h3>English Language Arts</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay examines complex ideas about creative collaboration, authentic voice, and learning from the AI collaboration experience. Students support their analysis with specific examples.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which development, organization, and style are appropriate.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students produce clearly organized essays following the three-part structure, with coherent development of their analysis and style appropriate to reflective academic writing.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Core Standards -->
+            <div id="ccss" class="standards-content">
+                <div class="standard-section">
+                    <h2>Common Core State Standards - English Language Arts</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 strongly aligns with writing standards for informative/explanatory texts and standards addressing writing process and production.
+                    </div>
+                    
+                    <h3>Writing Standards - Grades 11-12</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.2</div>
+                        <div class="standard-description">Write informative/explanatory texts to examine and convey complex ideas, concepts, and information clearly and accurately through the effective selection, organization, and analysis of content.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Central to the lesson. Students write reflective essays examining complex ideas about human-AI collaboration, authentic voice, and creative process. The three-part structure organizes content effectively. Students must be accurate in describing their experience and clear in their analysis.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.2.A</div>
+                        <div class="standard-description">Introduce a topic; organize complex ideas, concepts, and information so that each new element builds on that which precedes it.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay structure builds logically: Part A (the collaboration process) provides context for Part B (identifying voice in the work), which leads to Part C (articulating learning). Each section builds on what precedes it.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.2.B</div>
+                        <div class="standard-description">Develop the topic thoroughly by selecting the most significant and relevant facts, extended definitions, concrete details, quotations, or other information and examples.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Strong reflection essays include specific examples: not "Alia helped with dialogue" but "When I was stuck on the confrontation scene, I asked Alia to generate three versions..." Students must select significant, relevant details from their process.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.4</div>
+                        <div class="standard-description">Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students produce clear, coherent reflective writing organized around three parts, developed with specific examples, in a style appropriate to reflective academic writing. The audience (teacher) and purpose (demonstrate understanding) are clear.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.5</div>
+                        <div class="standard-description">Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A of the reflection essay asks students to describe how their collaboration evolved—metacognitive reflection on how they developed and strengthened their creative writing over time. The lesson itself focuses on writing development.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">CCSS.ELA-LITERACY.W.11-12.10</div>
+                        <div class="standard-description">Write routinely over extended time frames and shorter time frames for a range of tasks, purposes, and audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students have written creative work over an extended time frame (the semester). Now they write a focused reflection essay in a shorter time frame (one class period). This demonstrates range in writing across different time frames and purposes.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ISTE Standards -->
+            <div id="iste" class="standards-content">
+                <div class="standard-section">
+                    <h2>ISTE Standards for Students</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 aligns with ISTE standards for digital citizenship, knowledge construction, and creative communication through technology.
+                    </div>
+                    
+                    <h3>1. Empowered Learner</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.1.a</div>
+                        <div class="standard-description">Students articulate and set personal learning goals, develop strategies leveraging technology to achieve them, and reflect on the learning process itself to improve learning outcomes.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Central to the lesson. The entire reflection essay is about reflecting on the learning process—how students worked with AI technology, what strategies they developed, and what they learned about themselves and AI through the creative project.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.1.c</div>
+                        <div class="standard-description">Students use technology to seek feedback that informs and improves their practice and to demonstrate their learning in a variety of ways.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Throughout the project, students used AI to seek feedback on their creative writing. Part A of the reflection essay asks them to examine this process—how they used AI feedback and how it informed their practice.</div>
+                    </div>
+                    
+                    <h3>2. Digital Citizen</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.2.b</div>
+                        <div class="standard-description">Students engage in positive, safe, legal and ethical behavior when using technology.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The instruction to write the reflection essay without AI assistance demonstrates ethical technology use—knowing when AI assistance is appropriate and when independent work is required. This is explicitly framed as part of AI literacy.</div>
+                    </div>
+                    
+                    <h3>6. Creative Communicator</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.6.a</div>
+                        <div class="standard-description">Students choose the appropriate platforms and tools for meeting the desired objectives of their creation or communication.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A asks students to reflect on how they used AI as a tool for their creative work—when it was appropriate, when it wasn't, and how they made those choices. The reflection essay itself is written without AI, demonstrating appropriate tool choice.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">1.6.d</div>
+                        <div class="standard-description">Students publish or present content that customizes the message and medium for their intended audiences.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students prepare for upcoming presentations where they will share their creative work and reflections with classmates. The reflection essay prepares them to articulate their learning for the sharing day audience.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSTA Standards -->
+            <div id="csta" class="standards-content">
+                <div class="standard-section">
+                    <h2>CSTA K-12 Computer Science Standards</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 aligns with CSTA standards addressing impacts of computing, collaboration, and evaluation of technology effectiveness.
+                    </div>
+                    
+                    <h3>Impacts of Computing (IC)</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3A-IC-24</div>
+                        <div class="standard-description">Evaluate the ways computing impacts personal, ethical, social, economic, and cultural practices.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay evaluates AI's impact on personal creative practice. Students examine how AI affected their creative process, their sense of authorship, and their understanding of what human-AI collaboration means for creative work.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3B-IC-25</div>
+                        <div class="standard-description">Evaluate computational artifacts to maximize their beneficial effects and minimize harmful effects on society.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Part A of the reflection essay asks students to evaluate AI as a computational artifact: What did Alia do well? Where did you need to override or work around her suggestions? This is direct evaluation of beneficial and limiting effects.</div>
+                    </div>
+                    
+                    <h3>Collaborating Around Computing (CC)</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">3A-AP-22</div>
+                        <div class="standard-description">Design and develop computational artifacts working in team roles using collaborative tools.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students have developed creative artifacts (literary works) in collaboration with AI. The reflection essay examines this human-AI "team" collaboration—how roles were distributed, how the collaboration evolved, and what each party contributed.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C3 Framework -->
+            <div id="c3" class="standards-content">
+                <div class="standard-section">
+                    <h2>C3 Framework for Social Studies</h2>
+                    
+                    <div class="alignment-note">
+                        Lesson 8.5 aligns with C3 Framework standards for communicating conclusions and reflecting on inquiry processes.
+                    </div>
+                    
+                    <h3>Dimension 4: Communicating Conclusions</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D4.1.9-12</div>
+                        <div class="standard-description">Construct arguments using precise and knowledgeable claims, with evidence from multiple sources, while acknowledging counterclaims.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay requires students to construct claims about their collaboration process (what worked, what didn't, where voice appears) supported by evidence from their creative work. Part A's examination of limitations acknowledges complexity.</div>
+                    </div>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D4.2.9-12</div>
+                        <div class="standard-description">Construct explanations using sound reasoning, correct sequence, examples, and details with relevant information and data.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> Students construct explanations of their creative process with sound reasoning (why certain approaches worked), examples (specific moments from the project), and relevant details (what they learned about AI and about themselves).</div>
+                    </div>
+                    
+                    <h3>Dimension 1: Developing Questions</h3>
+                    
+                    <div class="standard-item">
+                        <div class="standard-code">D1.5.9-12</div>
+                        <div class="standard-description">Determine the kinds of sources that will be helpful in answering compelling and supporting questions.</div>
+                        <div class="lesson-mapping"><strong>Lesson 8.5 Alignment:</strong> The reflection essay uses the student's own experience as the primary source. The instruction to write without AI assistance demonstrates understanding that for questions about personal experience and reflection, the self is the most appropriate source.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- End content -->
+    </div><!-- End container -->
+    
+    <script>
+        function showStandards(value) {
+            // Hide all standards content
+            const allContent = document.querySelectorAll('.standards-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected standards
+            if (value) {
+                const selectedContent = document.getElementById(value);
+                if (selectedContent) {
+                    selectedContent.classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
